@@ -4,7 +4,7 @@ import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '',
+  base: 'https://JLByrne21.github.io/marginal-tax-uk',
   server: {
     host: '127.0.0.1'
   },
