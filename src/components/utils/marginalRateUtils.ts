@@ -2,11 +2,9 @@ import { getHighestIncomeTaxRate } from "@/tax_calcs/income_tax";
 import { calculateNationalInsuranceRate } from "@/tax_calcs/national_insurance";
 import { calculateEffectivePersonalAllowanceRate } from "@/tax_calcs/personal_allowance";
 import { calculatePlan2StudentLoanRate } from "@/tax_calcs/student_loan";
+import type { TaxRate } from "../graphs/MarginalRate";
 
-export interface TaxRate {
-    income: number;
-    rate: number;
-}
+
 
 const buildIncomeRange = (maxSalary: number, step: number): number[] => {
     const incomeCount = Math.floor(maxSalary / step) + 1;
@@ -33,6 +31,6 @@ export const getMarginalRates = (maxSalary: number, step: number, hasPlan2Studen
 
     return incomeRange.map((income) => ({
         income,
-        rate: calculateMarginalRate(income, hasPlan2StudentLoan),
+        Rate: calculateMarginalRate(income, hasPlan2StudentLoan),
     }));
 };

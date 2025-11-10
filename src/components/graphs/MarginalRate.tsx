@@ -6,6 +6,11 @@ import type { ChangeEvent } from "react";
 const MAX_INCOME = 200000;
 const STEP = 10;
 
+export interface TaxRate {
+    income: number;
+    Rate: number;
+}
+
 export const MarginalRateChart = () => {
   const [hasPlan2StudentLoan, setHasPlan2StudentLoan] = useState(false);
 
@@ -31,14 +36,16 @@ export const MarginalRateChart = () => {
       <LineChart
         data={data}
         index="income"
-        categories={["rate"]}
+        categories={["Rate"]}
         colors={["blue"]}
         showLegend
+        enableLegendSlider
         showTooltip
         valueFormatter={(value: number) => value.toLocaleString(undefined, { maximumFractionDigits: 1 })}
         tickGap={186}
         intervalType="preserveStartEnd"
         xAxisLabel="Gross income (£)"
+        yAxisLabel="Marginal rate (%)"
         className="h-80 w-full md:h-96"
       />
     </div>
